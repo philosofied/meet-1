@@ -78,7 +78,7 @@ export const getEvents = async() => {
     if (token) {
         removeQuery();
         // const url = 'https://1p08fwk0ok.execute-api.us-east-2.amazonaws.com/dev/api/get-events' + '/' + token;
-        const url = `https://ppxrywiwtb.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`;
+        const url = `https://g3a8s8zhc2.execute-api.us-east-1.amazonaws.com/dev/api/get-events/${token}`;
         const result = await axios.get(url);
         if (result.data) {
             var locations = extractLocations(result.data.events);
@@ -100,7 +100,7 @@ export const getAccessToken = async() => {
         const code = await searchParams.get("code");
         if (!code) {
             const results = await axios.get(
-                "https://ppxrywiwtb.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
+                "https://g3a8s8zhc2.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url"
             );
             const { authUrl } = results.data;
             return (window.location.href = authUrl);
@@ -113,7 +113,7 @@ export const getAccessToken = async() => {
 const getToken = async(code) => {
     const encodeCode = encodeURIComponent(code);
     const { access_token } = await fetch(
-            `https://ppxrywiwtb.execute-api.eu-central-1.amazonaws.com/dev/api/token/${encodeCode}`
+            `https://g3a8s8zhc2.execute-api.us-east-1.amazonaws.com/dev/api/token/${encodeCode}`
         )
         .then((res) => {
             return res.json();
